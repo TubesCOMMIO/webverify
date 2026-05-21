@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Gateway Verification</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1c1e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Top Left User Identity Card */
+        #user-profile-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            background: rgba(30, 32, 35, 0.8);
+            padding: 10px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            visibility: hidden;
+        }
+        #user-profile-badge img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: 12px;
+            border: 2px solid #5865F2;
+        }
+        #user-profile-badge span {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+        }
+
+        /* Center Verification Panel */
+        .verification-card {
+            background: #2f3136;
+            width: 100%;
+            max-width: 440px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .server-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #b9bbbe;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        .verify-btn {
+            background-color: #5865F2;
+            color: #ffffff;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(88, 101, 242, 0.2);
+        }
+        .verify-btn:hover {
+            background-color: #4752c4;
+        }
+        .verify-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="user-profile-badge">
+        <img id="user-avatar" src="" alt="Avatar">
+        <span id="user-username">Loading Discord Data...</span>
+    </div>
+
+    <div class="verification-card">
+        <div class="server-title" id="display-server-name">Loading Server...</div>
+        <div class="subtitle">Click below to authorize your account credentials and clear your entry restrictions.</div>
+        
+        <button id="auth-action-trigger" class="verify-btn">Authorize and Verify</button>
+    </div>
+
+    <script src="auth_config.js"></script>
+    <script src="verify.js"></script>
+</body>
+</html>
