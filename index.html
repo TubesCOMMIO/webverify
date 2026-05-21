@@ -103,7 +103,23 @@
         <button id="auth-action-trigger" class="verify-btn">Authorize and Verify</button>
     </div>
 
-    <script src="auth_config.js"></script>
-    <script src="verify.js"></script>
+    <script>
+        (function() {
+            // Generate a unique timestamp parameter to force browser to load latest file
+            const cacheBuster = "?t=" + new Date().getTime();
+
+            // 1. Create and inject the updated auth_config.js script tag
+            const configScript = document.createElement('script');
+            configScript.src = "auth_config.js" + cacheBuster;
+            document.body.appendChild(configScript);
+
+            // 2. Once the configuration is fully loaded into memory, inject verify.js
+            configScript.onload = function() {
+                const verifyScript = document.createElement('script');
+                verifyScript.src = "verify.js" + cacheBuster;
+                document.body.appendChild(verifyScript);
+            };
+        })();
+    </script>
 </body>
 </html>
